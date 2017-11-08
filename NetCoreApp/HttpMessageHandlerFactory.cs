@@ -13,6 +13,10 @@ namespace Test
             var handler = new HttpClientHandler();
             handler.ClientCertificateOptions = ClientCertificateOption.Manual;
             handler.ClientCertificates.Add(cert);
+            handler.ServerCertificateCustomValidationCallback = (request, serverCert, serverCertChain, error) =>
+            {
+                return true;
+            };
             return handler;
         }
     }
